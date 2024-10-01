@@ -51,9 +51,10 @@ namespace display::drm
         }
     }
 
-    DisplayAtrributes DrmDevice::displayAttributes() const
+    Atrributes DrmDevice::displayAttributes() const
     {
-        DisplayAtrributes attr;
+
+        Atrributes attr;
         attr.width = _bufs[0].width;
         attr.height = _bufs[0].height;
         // Note: The 32-bit color depth is assumed
@@ -131,9 +132,10 @@ namespace display::drm
         return _dev.size();
     }
 
-    DisplayAtrributes DrmDisplay::displayAttributes(int displayNum) const
+    Atrributes DrmDisplay::displayAttributes(int displayNum) const
     {
-        DisplayAtrributes attr{0, 0, 0};
+
+        Atrributes attr{0, 0, 0};
         if (displayNum >= 0 && displayNum < _dev.size())
         {
             attr = _dev[displayNum]->displayAttributes();
@@ -177,5 +179,22 @@ namespace display::drm
         {
             _dev[index]->draw(buffer, size);
         }
+    }
+
+    std::vector<std::string> getDrmDevices()
+    {
+        std::vector<std::string> devices;
+        for (int i = 0; i < 64; ++i)
+        {
+            std::string path = "/dev/dri/card" + std::to_string(i);
+            int fd = open(path.c_str(), O_RDWR | O_CLOEXEC);
+            if (fd < 0)
+            {
+                continue;
+            }
+            close(fd);
+            devices.push_back(path);
+        }
+        return devices;
     }
 } // namespace display::drm

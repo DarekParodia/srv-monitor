@@ -12,19 +12,10 @@
 #include <xf86drm.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <vector>
 
 namespace display::drm
 {
-    struct DisplayAtrributes
-    {
-        // Width of the display in pixels
-        int width;
-        // Height of the display in pixels
-        int height;
-        // Color depth of the display in number of bits
-        int depth;
-    };
-
     struct DrmBuffer
     {
         uint32_t width;
@@ -47,7 +38,7 @@ namespace display::drm
         DrmDevice(int fd, drmModeConnector *conn);
         ~DrmDevice();
 
-        DisplayAtrributes displayAttributes() const;
+        Atrributes displayAttributes() const;
         void draw(const void *data, size_t size);
 
     private:
@@ -72,11 +63,13 @@ namespace display::drm
         void init() override;
         void draw(int index, const void *buffer, size_t size) override;
         int displayCount() const;
-        DisplayAtrributes displayAttributes(int displayNum) const;
+        Atrributes displayAttributes(int index) const override;
 
     private:
         int _fd;
         std::vector<std::shared_ptr<DrmDevice>> _dev;
         Options _options;
     };
+
+    std::vector<std::string> getDrmDevices();
 }
