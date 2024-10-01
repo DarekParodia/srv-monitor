@@ -29,11 +29,10 @@ namespace display::drm
 
     /**
      * Options for DrmDisplay class
-     *
      */
     struct Options
     {
-        std::string device;
+        std::string device; /**< Path to the DRM device */
     };
 
     class DrmDevice
@@ -83,7 +82,7 @@ namespace display::drm
     /**
      * Get a list of DRM devices
      *
-     * @return std::vector<std::string> Vector of DRM devices path strings
+     * @return Vector of DRM devices path strings
      */
     std::vector<std::string> getDrmDevices();
 }

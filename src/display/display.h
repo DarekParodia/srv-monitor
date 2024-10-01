@@ -8,15 +8,13 @@ namespace display
      * @brief Attributes of the display
      *
      * This struct contains the attributes of the display such as width, height, and color depth.
+     *
      */
     struct Atrributes
     {
-        // Width of the display in pixels
-        int width;
-        // Height of the display in pixels
-        int height;
-        // Color depth of the display in number of bits
-        int depth;
+        int width;  /**< Width of the display in pixels */
+        int height; /**< Height of the display in pixels  */
+        int depth;  /**< Color depth of the display in number of bits */
     };
 
     class DisplayBase
