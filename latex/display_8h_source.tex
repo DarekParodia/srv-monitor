@@ -1,0 +1,29 @@
+\hypertarget{display_8h_source}{}\doxysection{display.\+h}
+\label{display_8h_source}\index{src/display/display.h@{src/display/display.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{namespace }display}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{13     \textcolor{keyword}{struct }\mbox{\hyperlink{structdisplay_1_1Atrributes}{Atrributes}}}
+\DoxyCodeLine{14     \{}
+\DoxyCodeLine{15         \textcolor{keywordtype}{int} \mbox{\hyperlink{structdisplay_1_1Atrributes_a4704d1b2498eed83e5be1d14fa962977}{width}};  }
+\DoxyCodeLine{16         \textcolor{keywordtype}{int} \mbox{\hyperlink{structdisplay_1_1Atrributes_a314baecf9b9d719b6e1faff1e4a205e6}{height}}; }
+\DoxyCodeLine{17         \textcolor{keywordtype}{int} \mbox{\hyperlink{structdisplay_1_1Atrributes_a010941d86e316f99ad04bc2a17a1f2ab}{depth}};  }
+\DoxyCodeLine{18     \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keyword}{class }\mbox{\hyperlink{classdisplay_1_1DisplayBase}{DisplayBase}}}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{29         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classdisplay_1_1DisplayBase_ae2c3dc7c40d456fee259f7c0bda6c102}{init}}() = 0;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{39         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classdisplay_1_1DisplayBase_ae2a12d10751a1287a139d49dc96711b3}{draw}}(\textcolor{keywordtype}{int} index, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *buffer, \textcolor{keywordtype}{size\_t} size) = 0;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{47         \textcolor{keyword}{virtual} \mbox{\hyperlink{structdisplay_1_1Atrributes}{Atrributes}} \mbox{\hyperlink{classdisplay_1_1DisplayBase_acf78632c33203e62be62d424f8cb01c5}{displayAttributes}}(\textcolor{keywordtype}{int} index) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{48     \};}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}

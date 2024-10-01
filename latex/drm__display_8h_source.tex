@@ -1,0 +1,81 @@
+\hypertarget{drm__display_8h_source}{}\doxysection{drm\+\_\+display.\+h}
+\label{drm__display_8h_source}\index{src/display/drm/drm\_display.h@{src/display/drm/drm\_display.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}display/display.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}utils/logger.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}settings.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <xf86drm.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <xf86drmMode.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <sys/mman.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <xf86drm.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <fcntl.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }display::drm}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{struct }\mbox{\hyperlink{structdisplay_1_1drm_1_1DrmBuffer}{DrmBuffer}}}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         uint32\_t width;}
+\DoxyCodeLine{22         uint32\_t height;}
+\DoxyCodeLine{23         uint32\_t stride;}
+\DoxyCodeLine{24         uint32\_t size;}
+\DoxyCodeLine{25         uint32\_t handle;}
+\DoxyCodeLine{26         uint8\_t *map;}
+\DoxyCodeLine{27         uint32\_t fb;}
+\DoxyCodeLine{28     \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{33     \textcolor{keyword}{struct }\mbox{\hyperlink{structdisplay_1_1drm_1_1Options}{Options}}}
+\DoxyCodeLine{34     \{}
+\DoxyCodeLine{35         std::string \mbox{\hyperlink{structdisplay_1_1drm_1_1Options_a2e232f14dc00ec2ff96f9c403255e46b}{device}}; }
+\DoxyCodeLine{36     \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keyword}{class }\mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDevice}{DrmDevice}}}
+\DoxyCodeLine{39     \{}
+\DoxyCodeLine{40     \textcolor{keyword}{public}:}
+\DoxyCodeLine{41         \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDevice}{DrmDevice}}(\textcolor{keywordtype}{int} fd, drmModeConnector *conn);}
+\DoxyCodeLine{42         \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDevice}{\string~DrmDevice}}();}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \mbox{\hyperlink{structdisplay_1_1Atrributes}{Atrributes}} displayAttributes() \textcolor{keyword}{const};}
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} draw(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keyword}{private}:}
+\DoxyCodeLine{48         \textcolor{keywordtype}{int} \_fd;}
+\DoxyCodeLine{49         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_frontBuf;}
+\DoxyCodeLine{50         \mbox{\hyperlink{structdisplay_1_1drm_1_1DrmBuffer}{DrmBuffer}} \_bufs[2];}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         drmModeModeInfo \_mode;}
+\DoxyCodeLine{53         uint32\_t \_conn;}
+\DoxyCodeLine{54         uint32\_t \_crtc;}
+\DoxyCodeLine{55         drmModeCrtc *\_saved\_crtc;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keywordtype}{void} createBuffer(\textcolor{keywordtype}{int} fd, \mbox{\hyperlink{structdisplay_1_1drm_1_1DrmBuffer}{DrmBuffer}} \&buf);}
+\DoxyCodeLine{58         \textcolor{keywordtype}{void} destroyBuffer(\textcolor{keywordtype}{int} fd, \mbox{\hyperlink{structdisplay_1_1drm_1_1DrmBuffer}{DrmBuffer}} \&buf);}
+\DoxyCodeLine{59     \};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{66     \textcolor{keyword}{class }\mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDisplay}{DrmDisplay}} : \textcolor{keyword}{public} \mbox{\hyperlink{classdisplay_1_1DisplayBase}{display::DisplayBase}}}
+\DoxyCodeLine{67     \{}
+\DoxyCodeLine{68     \textcolor{keyword}{public}:}
+\DoxyCodeLine{69         \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDisplay}{DrmDisplay}}(\mbox{\hyperlink{structdisplay_1_1drm_1_1Options}{Options}} \&options);}
+\DoxyCodeLine{70         \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDisplay}{\string~DrmDisplay}}();}
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDisplay_a4d4bf03ae275bcc5e2b21ead49786e76}{init}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{72         \textcolor{keywordtype}{void} \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDisplay_a9d69c9280d96f01113767ac16c7b1c42}{draw}}(\textcolor{keywordtype}{int} index, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *buffer, \textcolor{keywordtype}{size\_t} size) \textcolor{keyword}{override};}
+\DoxyCodeLine{73         \textcolor{keywordtype}{int} displayCount() \textcolor{keyword}{const};}
+\DoxyCodeLine{74         \mbox{\hyperlink{structdisplay_1_1Atrributes}{Atrributes}} \mbox{\hyperlink{classdisplay_1_1drm_1_1DrmDisplay_af5b92bdf6e07ffeacdcce101cc066a12}{displayAttributes}}(\textcolor{keywordtype}{int} index) \textcolor{keyword}{const override};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{keyword}{private}:}
+\DoxyCodeLine{77         \textcolor{keywordtype}{int} \_fd;}
+\DoxyCodeLine{78         std::vector<std::shared\_ptr<DrmDevice>> \_dev;}
+\DoxyCodeLine{79         \mbox{\hyperlink{structdisplay_1_1drm_1_1Options}{Options}} \_options;}
+\DoxyCodeLine{80     \};}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{87     std::vector<std::string> getDrmDevices();}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
