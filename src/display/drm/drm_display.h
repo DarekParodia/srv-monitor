@@ -27,6 +27,10 @@ namespace display::drm
         uint32_t fb;
     };
 
+    /**
+     * Options for DrmDisplay class
+     *
+     */
     struct Options
     {
         std::string device;
@@ -55,6 +59,11 @@ namespace display::drm
         void destroyBuffer(int fd, DrmBuffer &buf);
     };
 
+    /**
+     * @brief DrmDisplay class
+     *
+     * This class is used to display content on a DRM device
+     */
     class DrmDisplay : public display::DisplayBase
     {
     public:
@@ -71,5 +80,10 @@ namespace display::drm
         Options _options;
     };
 
+    /**
+     * Get a list of DRM devices
+     *
+     * @return std::vector<std::string> Vector of DRM devices path strings
+     */
     std::vector<std::string> getDrmDevices();
 }

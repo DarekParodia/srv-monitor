@@ -4,6 +4,11 @@
 
 namespace display
 {
+    /**
+     * @brief Attributes of the display
+     *
+     * This struct contains the attributes of the display such as width, height, and color depth.
+     */
     struct Atrributes
     {
         // Width of the display in pixels
