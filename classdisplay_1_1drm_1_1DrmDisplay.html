@@ -105,6 +105,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d69c9280d96f01113767ac16c7b1c42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdisplay_1_1drm_1_1DrmDisplay.html#a9d69c9280d96f01113767ac16c7b1c42">draw</a> (int index, const void *buffer, size_t size) override</td></tr>
 <tr class="memdesc:a9d69c9280d96f01113767ac16c7b1c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a pixel buffer to the display.  <a href="classdisplay_1_1drm_1_1DrmDisplay.html#a9d69c9280d96f01113767ac16c7b1c42">More...</a><br /></td></tr>
 <tr class="separator:a9d69c9280d96f01113767ac16c7b1c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b5b4f10a9cbdd1ad886252167ad7fc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdisplay_1_1drm_1_1DrmDisplay.html#a1b5b4f10a9cbdd1ad886252167ad7fc5">update</a> ()</td></tr>
+<tr class="memdesc:a1b5b4f10a9cbdd1ad886252167ad7fc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the display.  <a href="classdisplay_1_1drm_1_1DrmDisplay.html#a1b5b4f10a9cbdd1ad886252167ad7fc5">More...</a><br /></td></tr>
+<tr class="separator:a1b5b4f10a9cbdd1ad886252167ad7fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1458c7e7c1eabe490b110b2b710b360b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdisplay_1_1drm_1_1DrmDisplay.html#a1458c7e7c1eabe490b110b2b710b360b">shouldClose</a> ()</td></tr>
+<tr class="memdesc:a1458c7e7c1eabe490b110b2b710b360b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns True if display wants to die.  <a href="classdisplay_1_1drm_1_1DrmDisplay.html#a1458c7e7c1eabe490b110b2b710b360b">More...</a><br /></td></tr>
+<tr class="separator:a1458c7e7c1eabe490b110b2b710b360b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f73fd74fbc666375e1a2d2dc92058b4"><td class="memItemLeft" align="right" valign="top"><a id="a3f73fd74fbc666375e1a2d2dc92058b4" name="a3f73fd74fbc666375e1a2d2dc92058b4"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>displayCount</b> () const</td></tr>
 <tr class="separator:a3f73fd74fbc666375e1a2d2dc92058b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,6 +240,66 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>displayCount</b> () co
 <p >This function should be called before any other functions in this class. </p>
 
 <p>Implements <a class="el" href="classdisplay_1_1DisplayBase.html#ae2c3dc7c40d456fee259f7c0bda6c102">display::DisplayBase</a>.</p>
+
+</div>
+</div>
+<a id="a1458c7e7c1eabe490b110b2b710b360b" name="a1458c7e7c1eabe490b110b2b710b360b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1458c7e7c1eabe490b110b2b710b360b">&#9670;&#160;</a></span>shouldClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool display::drm::DrmDisplay::shouldClose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns True if display wants to die. </p>
+<p >In case of dekstop display this is like glfw's window should close function. It generally returns true if a user wants to stop the process </p>
+
+<p>Implements <a class="el" href="classdisplay_1_1DisplayBase.html#a4936035df9ea69836fbb7c83044af0c0">display::DisplayBase</a>.</p>
+
+</div>
+</div>
+<a id="a1b5b4f10a9cbdd1ad886252167ad7fc5" name="a1b5b4f10a9cbdd1ad886252167ad7fc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b5b4f10a9cbdd1ad886252167ad7fc5">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display::drm::DrmDisplay::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the display. </p>
+<p >If a Display like for example DesktopDisplay needs an update this function will do it. Not very usable in case of drm display </p>
+
+<p>Implements <a class="el" href="classdisplay_1_1DisplayBase.html#a6575e49e6859c55c107a9a8c05dc32ff">display::DisplayBase</a>.</p>
 
 </div>
 </div>
