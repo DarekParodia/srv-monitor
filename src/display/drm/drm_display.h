@@ -70,6 +70,8 @@ namespace display::drm
         ~DrmDisplay();
         void init() override;
         void draw(int index, const void *buffer, size_t size) override;
+        void update() {};
+        bool shouldClose() { return false; };
         int displayCount() const;
         Atrributes displayAttributes(int index) const override;
 

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(SrvMonitor)
 
+option(GLFW_BUILD_DOCS OFF)
+option(GLFW_BUILD_EXAMPLES OFF)
+option(GLFW_BUILD_TESTS OFF)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE DEBUG)
@@ -19,6 +23,11 @@ include_directories(
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # packages
+find_package(OpenGL REQUIRED)
+include_directories(${OPENGL_INCLUDE_DIRS})
+
+find_package(glfw3 REQUIRED)
+include_directories(${GLFW_INCLUDE_DIRS})
 
 # libdrm (include FindDRM.cmake)
 find_package(LibDRM REQUIRED)
@@ -33,6 +42,6 @@ target_link_directories(srvmonitor PUBLIC ${CMAKE_SOURCE_DIR}/src/)
 
 # link libraries
 
-target_link_libraries(srvmonitor ${LIBDRM_LIBRARIES})
+target_link_libraries(srvmonitor ${LIBDRM_LIBRARIES} glfw OpenGL)
 
 install(TARGETS srvmonitor DESTINATION ${CMAKE_INSTALL_BINDIR})

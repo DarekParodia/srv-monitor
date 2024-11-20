@@ -39,11 +39,26 @@ namespace display
         virtual void draw(int index, const void *buffer, size_t size) = 0;
 
         /**
+         * @brief Updates the display
+         *
+         * If a Display like for example DesktopDisplay needs an update this function will do it. Not very usable in case of drm display
+         */
+        virtual void update() = 0;
+
+        /**
          *
          * @brief Get attributes of the display
          * @param index The index of the display to get attributes for
          * @return The attributes of the display
          */
         virtual Atrributes displayAttributes(int index) const = 0;
+
+        /**
+         *
+         * @brief Returns True if display wants to die
+         *
+         * In case of dekstop display this is like glfw's window should close function. It generally returns true if a user wants to stop the process
+         */
+        virtual bool shouldClose() = 0;
     };
 }
