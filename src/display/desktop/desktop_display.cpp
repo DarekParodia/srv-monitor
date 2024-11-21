@@ -35,6 +35,9 @@ namespace display::desktop
 
         // Configure GLFW
         glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         // glfwWindowHint(GLFW_SAMPLES, 16);
@@ -71,6 +74,7 @@ namespace display::desktop
         //     exit(1);
         // }
 
+        glfwMakeContextCurrent(window);
         glViewport(0, 0, this->options.attr.width, this->options.attr.height);
 
         std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;

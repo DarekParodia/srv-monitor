@@ -31,7 +31,7 @@ void init_desktop()
 {
     logger.info("Initializing desktop display");
     desktop_options.attr = display::Atrributes(600, 400, 24);
-    desktop_options.vsync = true;
+    desktop_options.vsync = false;
     desktop_options.title = std::string("Srv Monitor");
     display::desktop::DesktopDisplay *desktop_disp = new display::desktop::DesktopDisplay(desktop_options);
 
@@ -39,6 +39,7 @@ void init_desktop()
     desktop_disp->show();
 
     disp = desktop_disp;
+    logger.info("Desktop display initialized");
 }
 
 void parse_args(int argc, char *argv[])
@@ -70,10 +71,12 @@ int main(int argc, char *argv[])
         ((uint8_t *)data)[i + 3] = 0xff;                                       // alpha
     }
 
+    logger.info("Running loop");
     while (!disp->shouldClose())
     {
         disp->draw(0, data, size);
         disp->update();
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 
     // delay for 5 seconds
