@@ -58,25 +58,26 @@ int main(int argc, char *argv[])
     else
         init_drm();
 
-    display::Atrributes attr = disp->displayAttributes(0);
-    size_t size = attr.width * attr.height * (attr.depth / 8);
-
-    void *data = malloc(size);
-
-    for (int i = 0; i < size; i += 4)
-    {
-        ((uint8_t *)data)[i] = (uint8_t)(((double)i / (double)(size)) * 0xff); // blue
-        ((uint8_t *)data)[i + 1] = 0;                                          // green
-        ((uint8_t *)data)[i + 2] = 0;                                          // red
-        ((uint8_t *)data)[i + 3] = 0xff;                                       // alpha
-    }
-
     logger.info("Running loop");
     while (!disp->shouldClose())
     {
+        display::Atrributes attr = disp->displayAttributes(0);
+        size_t size = attr.width * attr.height * 3;
+
+        void *data = malloc(size);
+
+        for (int i = 0; i < size; i += 3)
+        {
+            ((uint8_t *)data)[i] = (uint8_t)(((double)i / (double)(size)) * 0xff); // blue
+            ((uint8_t *)data)[i + 1] = i % 0xff;                                   // green
+            ((uint8_t *)data)[i + 2] = 0;                                          // red
+        }
+
         disp->draw(0, data, size);
         disp->update();
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
+
+        free(data);
     }
 
     // delay for 5 seconds
