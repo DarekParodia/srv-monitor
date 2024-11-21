@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timer_0',['timer',['../classtimer.html',1,'']]]
+  ['options_0',['Options',['../structdisplay_1_1desktop_1_1Options.html',1,'display::desktop::Options'],['../structdisplay_1_1drm_1_1Options.html',1,'display::drm::Options']]]
 ];

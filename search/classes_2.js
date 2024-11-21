@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_0',['Logger',['../classLogger.html',1,'']]]
+  ['gladglversionstruct_0',['gladGLversionStruct',['../structgladGLversionStruct.html',1,'']]]
 ];
