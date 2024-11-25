@@ -30,13 +30,15 @@ void init_drm()
 void init_desktop()
 {
     logger.info("Initializing desktop display");
-    desktop_options.attr = display::Atrributes(600, 400, 24);
+    desktop_options.attr = {
+        .width = 800,
+        .height = 600,
+        .depth = 32};
     desktop_options.vsync = false;
     desktop_options.title = std::string("Srv Monitor");
     display::desktop::DesktopDisplay *desktop_disp = new display::desktop::DesktopDisplay(desktop_options);
 
     desktop_disp->init();
-    desktop_disp->show();
 
     disp = desktop_disp;
     logger.info("Desktop display initialized");
@@ -62,21 +64,25 @@ int main(int argc, char *argv[])
     while (!disp->shouldClose())
     {
         display::Atrributes attr = disp->displayAttributes(0);
-        size_t size = attr.width * attr.height * 3;
+        size_t size = attr.width * attr.height * (attr.depth / 8);
+
+        logger.info("Width: " + std::to_string(attr.width));
+        logger.info("Height: " + std::to_string(attr.height));
+        logger.info("Depth: " + std::to_string(attr.depth));
+        logger.info("Size: " + std::to_string(size));
 
         void *data = malloc(size);
 
-        for (int i = 0; i < size; i += 3)
+        for (int i = 0; i < size; i += 4)
         {
-            ((uint8_t *)data)[i] = (uint8_t)(((double)i / (double)(size)) * 0xff); // blue
-            ((uint8_t *)data)[i + 1] = i % 0xff;                                   // green
-            ((uint8_t *)data)[i + 2] = 0;                                          // red
+            ((uint8_t *)data)[i] = (uint8_t)(((double)i / (double)(size)) * 0xff); // red
+            ((uint8_t *)data)[i + 1] = 0x0;                                        // green
+            ((uint8_t *)data)[i + 2] = 0x0;                                        // blue
+            ((uint8_t *)data)[i + 3] = 0xff;                                       // aplha
         }
 
         disp->draw(0, data, size);
         disp->update();
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
-
         free(data);
     }
 
