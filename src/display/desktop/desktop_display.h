@@ -22,6 +22,7 @@ namespace display::desktop
         void draw(int index, const void *buffer, size_t size) override;
         Atrributes displayAttributes(int index) const override;
         void update() override;
+        void setDimensions(int width, int height);
         bool shouldClose() override;
 
     private:

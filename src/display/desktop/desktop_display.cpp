@@ -18,6 +18,8 @@ namespace display::desktop
     {
         if (win != window)
             return;
+        display::desktop::DesktopDisplay *disp = reinterpret_cast<display::desktop::DesktopDisplay *>(win->userPtr);
+        disp->setDimensions(r.x, r.y);
         // std::cout << "Resized " << r.x << " " << r.y << std::endl;
     }
 
@@ -36,6 +38,7 @@ namespace display::desktop
         win = RGFW_createWindow("Srv Monitor", RGFW_RECT(0, 0, this->options.attr.width, this->options.attr.height), RGFW_CENTER | RGFW_TRANSPARENT_WINDOW);
         RGFW_setWindowResizeCallback(windowresizefunc);
 
+        win->userPtr = reinterpret_cast<void *>(this);
         this->options.attr.height = win->r.h;
     }
 
@@ -54,6 +57,11 @@ namespace display::desktop
         RGFW_window_setGPURender(win, 0);
         RGFW_window_swapBuffers(win);
         RGFW_window_checkFPS(win, 60);
+    }
+    void DesktopDisplay::setDimensions(int width, int height)
+    {
+        this->options.attr.width = width;
+        this->options.attr.height = height;
     }
 
     bool DesktopDisplay::shouldClose()

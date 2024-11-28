@@ -66,10 +66,10 @@ int main(int argc, char *argv[])
         display::Atrributes attr = disp->displayAttributes(0);
         size_t size = attr.width * attr.height * (attr.depth / 8);
 
-        logger.info("Width: " + std::to_string(attr.width));
-        logger.info("Height: " + std::to_string(attr.height));
-        logger.info("Depth: " + std::to_string(attr.depth));
-        logger.info("Size: " + std::to_string(size));
+        // logger.info("Width: " + std::to_string(attr.width));
+        // logger.info("Height: " + std::to_string(attr.height));
+        // logger.info("Depth: " + std::to_string(attr.depth));
+        // logger.info("Size: " + std::to_string(size));
 
         void *data = malloc(size);
 
