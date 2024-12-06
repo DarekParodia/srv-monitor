@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_0',['init',['../classdisplay_1_1desktop_1_1DesktopDisplay.html#a7c9f303d98750493e713839cfb8cf9e6',1,'display::desktop::DesktopDisplay::init()'],['../classdisplay_1_1DisplayBase.html#ae2c3dc7c40d456fee259f7c0bda6c102',1,'display::DisplayBase::init()'],['../classdisplay_1_1drm_1_1DrmDisplay.html#a4d4bf03ae275bcc5e2b21ead49786e76',1,'display::drm::DrmDisplay::init()']]]
+  ['getbuffersize_0',['getBufferSize',['../classdisplay_1_1desktop_1_1DesktopDisplay.html#a93a30349a60a5479284d4d0edb994843',1,'display::desktop::DesktopDisplay::getBufferSize()'],['../classdisplay_1_1DisplayBase.html#a642a2f0f630d974ec3c6990a55a4930f',1,'display::DisplayBase::getBufferSize()'],['../classdisplay_1_1drm_1_1DrmDisplay.html#a6ff6ffb3b686389b68faf1698d2489da',1,'display::drm::DrmDisplay::getBufferSize()']]]
 ];
