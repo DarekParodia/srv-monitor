@@ -31,8 +31,8 @@ void init_desktop()
 {
     logger.info("Initializing desktop display");
     desktop_options.attr = {
-        .width = 800,
-        .height = 600,
+        .width = 1280,
+        .height = 720,
         .depth = 32};
     desktop_options.vsync = false;
     desktop_options.title = std::string("Srv Monitor");
