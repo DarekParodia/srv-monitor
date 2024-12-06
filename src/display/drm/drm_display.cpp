@@ -197,4 +197,10 @@ namespace display::drm
         }
         return devices;
     }
+
+    size_t DrmDisplay::getBufferSize(int index)
+    {
+        Atrributes attr = this->displayAttributes(index);
+        return attr.width * attr.height * attr.depth;
+    }
 } // namespace display::drm

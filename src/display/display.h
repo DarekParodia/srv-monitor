@@ -60,5 +60,13 @@ namespace display
          * In case of dekstop display this is like glfw's window should close function. It generally returns true if a user wants to stop the process
          */
         virtual bool shouldClose() = 0;
+
+        /**
+         *
+         * @brief Get size of frame buffer
+         * @param index The index of the display to get buffer size
+         * @return Buffer size in bytes
+         */
+        virtual size_t getBufferSize(int index) = 0;
     };
 }

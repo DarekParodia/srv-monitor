@@ -24,6 +24,7 @@ namespace display::desktop
         void update() override;
         void setDimensions(int width, int height);
         bool shouldClose() override;
+        size_t getBufferSize(int index);
 
     private:
         Options options;

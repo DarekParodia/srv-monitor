@@ -63,13 +63,7 @@ int main(int argc, char *argv[])
     logger.info("Running loop");
     while (!disp->shouldClose())
     {
-        display::Atrributes attr = disp->displayAttributes(0);
-        size_t size = attr.width * attr.height * (attr.depth / 8);
-
-        // logger.info("Width: " + std::to_string(attr.width));
-        // logger.info("Height: " + std::to_string(attr.height));
-        // logger.info("Depth: " + std::to_string(attr.depth));
-        // logger.info("Size: " + std::to_string(size));
+        size_t size = disp->getBufferSize(0);
 
         void *data = malloc(size);
 
@@ -85,9 +79,6 @@ int main(int argc, char *argv[])
         disp->update();
         free(data);
     }
-
-    // delay for 5 seconds
-    // std::this_thread::sleep_for(std::chrono::seconds(5));
 
     return 0;
 }

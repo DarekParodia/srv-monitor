@@ -73,6 +73,7 @@ namespace display::drm
         void update() {};
         bool shouldClose() { return false; };
         int displayCount() const;
+        size_t getBufferSize(int index);
         Atrributes displayAttributes(int index) const override;
 
     private:

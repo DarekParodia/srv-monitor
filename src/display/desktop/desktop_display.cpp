@@ -36,7 +36,7 @@ namespace display::desktop
 
     void DesktopDisplay::init()
     {
-        win = RGFW_createWindow("Srv Monitor", RGFW_RECT(0, 0, this->options.attr.width, this->options.attr.height), RGFW_CENTER | RGFW_NO_RESIZE);
+        win = RGFW_createWindow("Srv Monitor", RGFW_RECT(0, 0, this->options.attr.width, this->options.attr.height), RGFW_CENTER | RGFW_NO_RESIZE | RGFW_TRANSPARENT_WINDOW);
         RGFW_setWindowResizeCallback(windowresizefunc);
 
         win->userPtr = reinterpret_cast<void *>(this);
@@ -69,5 +69,10 @@ namespace display::desktop
     bool DesktopDisplay::shouldClose()
     {
         return RGFW_window_shouldClose(win);
+    }
+
+    size_t DesktopDisplay::getBufferSize(int index)
+    {
+        return RGFW_bufferSize.w * RGFW_bufferSize.h * 4;
     }
 }
