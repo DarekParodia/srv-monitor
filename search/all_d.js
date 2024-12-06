@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_0',['name',['../structRGFW__monitor.html#aaea809cea2ca3420c64b1ae3d69bb3ae',1,'RGFW_monitor']]]
+  ['options_0',['Options',['../structdisplay_1_1desktop_1_1Options.html',1,'display::desktop::Options'],['../structdisplay_1_1drm_1_1Options.html',1,'display::drm::Options']]]
 ];
